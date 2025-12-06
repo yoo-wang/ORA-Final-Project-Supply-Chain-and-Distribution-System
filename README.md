@@ -42,6 +42,7 @@ This project implements a resilience-oriented optimization model to determine th
 
 ## 2. Methodology
 
+
 ## 3. Data Collection and Analysis Result
 
 ## 4. Conclusion
