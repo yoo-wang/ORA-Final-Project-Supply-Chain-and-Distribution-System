@@ -127,7 +127,7 @@ Constraints:<br>
 <br>
 <img src="Images/Line Status Logic_Switching.png" alt="Line Status Logic_Switching" width="700"><br>
 <br>
-
+<img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
 
 
 
