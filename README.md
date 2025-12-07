@@ -51,7 +51,7 @@ This project implements a resilience-oriented optimization model to determine th
 ## 4. Conclusion
 ### 4.1 Data Collection
 > Basic Model (Simplified IEEE 13-Node Distribution System)
-<img src="IEEE-13nodes.png" alt="IEEE-13nodes" width="300">
+<img src="assets/Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="300">
 
 ---
 >
