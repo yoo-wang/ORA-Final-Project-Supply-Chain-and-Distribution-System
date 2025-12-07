@@ -53,16 +53,19 @@ This project implements a resilience-oriented optimization model to determine th
 > Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
-<img src="Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="450">  Source: W. H. Kersting
 
+<img src="Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="450">  Source: W. H. Kersting
 
 The following figure illustrates the **modified IEEE 13-node distribution system** used in this project. The diagram details the network configuration with the following parameters:  
 **Node indices:** Standard numbers (e.g., 1, 2, 10).  
 **Active load:** Values shown in parentheses (e.g., (66.67), (133.33)).  
 **Line indices:** Numbers inside orange circles.  
-<img src="Images/IEEE-13nodes distribution system.png" alt="IEEE-13nodes distribution system" width="700">
+
+<img src="Images/IEEE-13nodes distribution system.png" alt="IEEE-13nodes distribution system" width="700">  
+Source: Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020)   
 
 
+Simplified assumptions have been made regarding information omitted from the original paper, such as reactive power (Q) loads, line R/X ratios, and specific connectivity. Specifically, all 15 lines are assumed to share identical electrical characteristics regardless of length (e.g., R = 0.1 Ω and X = 0.1 Ω).
 
 ---
 >
