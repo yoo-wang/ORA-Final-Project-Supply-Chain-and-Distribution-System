@@ -57,6 +57,8 @@ This project references the **IEEE 13-node Test Feeder** as the test model. It i
 <img src="Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="450">  Source: W. H. Kersting
 <br>
 <br>
+<br>
+<br>
 The following figure illustrates the **modified IEEE 13-node distribution system** used in this project. The diagram details the network configuration with the following parameters:  
 **Node indices:** Standard numbers (e.g., 1, 2, 10).  
 **Active load:** Values shown in parentheses (e.g., (66.67), (133.33)).  
@@ -103,10 +105,19 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 | 11 | 133.33 | 0 |
 | 12 | 281 | 0 |
 | 13 | 56.67 | 0 |
-<br> 
+<br>
+<br>
+
+**Parameters, Objective Function, and Constraints**
+
+<br>
+
+Objective Funtion:<br>
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="350">
+<br>
+Constraints:<br>
 
 
-** Parameters, Objective Function, and Constraints **
 
 ---
 >Phase 2: 
