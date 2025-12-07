@@ -116,9 +116,19 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 
 ### 4.3 Results and Managerial Implications
 > Basic Model (Simplified IEEE 13-Node Distribution System)
+
+The primary goal for this phase, which is building a basic model, is to **minimize system performance loss**. We formulate the objective function as the minimization of total load shedding, defined as the summation of unserved active power across all nodes.  
+To ensure physical realism and maintain a logical radial topology, a minimal penalty cost for switching operations has been incorporated to prevent "ghost flows" (mathematical loops).  
+In the following figures, the system status is represented as follows:  
+Green Lines (Switch = 1): Represent active lines carrying power flow.  
+Red Dashed Lines (Switch = 0): Represent broken or open lines with no flow.  
+The numerical labels indicate the magnitude of active power flow on each line.  
+On the top of each figure will mention which line(s) is/are broken, and also record the total load shedding. These result figures showing that our basic model is working properly.
 <br>
-<img src="Images/Example_Broken 1 Line (L1).png" alt="Example_Broken 1 Line (L1)" width="450">
-<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="450">
+<img src="Images/Example_Broken 1 Line (L1).png" alt="Example_Broken 1 Line (L1)" width="600">
+<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="600">
+<img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600">
+<img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
 
 
