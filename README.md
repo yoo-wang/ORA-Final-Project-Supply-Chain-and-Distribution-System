@@ -114,15 +114,20 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 <br>
 
 Objective Funtion:<br>
-<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="200">
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="300">
 <br>
 Constraints:<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
 <img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
+<br>
 <img src="Images/Operational Constraints_Line Capacity Constraints.png" alt="Operational Constraints_Line Capacity Constraints" width="700"><br>
 <img src="Images/Operational Constraints_DG Output Constraints.png" alt="Operational Constraints_DG Output Constraints" width="700"><br>
 <img src="Images/Operational Constraints_Load Shedding Constraints.png" alt="Operational Constraints_Load Shedding Constraints" width="700"><br>
 <img src="Images/Operational Constraints_Voltage Constraints.png" alt="Operational Constraints_Voltage Constraints" width="700"><br>
+<br>
+<img src="Images/Line Status Logic_Switching.png" alt="Line Status Logic_Switching" width="700"><br>
+<br>
+
 
 
 
