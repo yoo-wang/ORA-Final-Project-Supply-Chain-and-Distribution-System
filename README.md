@@ -53,25 +53,65 @@ This project implements a resilience-oriented optimization model to determine th
 > Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
-
+<br>
 <img src="Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="450">  Source: W. H. Kersting
-
+<br>
+<br>
 The following figure illustrates the **modified IEEE 13-node distribution system** used in this project. The diagram details the network configuration with the following parameters:  
 **Node indices:** Standard numbers (e.g., 1, 2, 10).  
 **Active load:** Values shown in parentheses (e.g., (66.67), (133.33)).  
 **Line indices:** Numbers inside orange circles.  
-
+<br>
 <img src="Images/IEEE-13nodes distribution system.png" alt="IEEE-13nodes distribution system" width="700">  
-Source: Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020)   
-
-
+Source: Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020) 
+<br>
+<br>
 Simplified assumptions have been made regarding information omitted from the original paper, such as reactive power (Q) loads, line R/X ratios, and specific connectivity. Specifically, all 15 lines are assumed to share identical electrical characteristics regardless of length (e.g., R = 0.1 Ω and X = 0.1 Ω).
+| Line ID | Connection | R (Ω) | X (Ω) |
+| :--- | :--- | :--- | :--- |
+| 1 | 1-2 | 0.1 | 0.1 |
+| 2 | 2-3 | 0.1 | 0.1 |
+| 3 | 3-4 | 0.1 | 0.1 |
+| 4 | 2-5 | 0.1 | 0.1 |
+| 5 | 5-6 | 0.1 | 0.1 |
+| 6 | 6-7 | 0.1 | 0.1 |
+| 7 | 7-8 | 0.1 | 0.1 |
+| 8 | 3-8 | 0.1 | 0.1 |
+| 9 | 8-9 | 0.1 | 0.1 |
+| 10 | 4-9 | 0.1 | 0.1 |
+| 11 | 2-10 | 0.1 | 0.1 |
+| 12 | 10-11 | 0.1 | 0.1 |
+| 13 | 11-12 | 0.1 | 0.1 |
+| 14 | 12-13 | 0.1 | 0.1 |
+| 15 | 3-13 | 0.1 | 0.1 |
+
+Regarding the load data, we assume that the reactive power (Q) for all nodes is 0 kVAr.
+<br>
+
+| Node ID | P load (kW) | Q load (kVAr) |
+| :--- | :--- | :--- |
+| 1 | 0 | 0 |
+| 2 | 66.67 | 0 |
+| 3 | 85 | 0 |
+| 4 | 100 | 0 |
+| 5 | 56.67 | 0 |
+| 6 | 76.67 | 0 |
+| 7 | 56.67 | 0 |
+| 8 | 100 | 0 |
+| 9 | 142.67 | 0 |
+| 10 | 0 | 0 |
+| 11 | 133.33 | 0 |
+| 12 | 281 | 0 |
+| 13 | 56.67 | 0 |
+
+
 
 ---
 >
 
 
 ### 4.2 Analysis
+> Basic Model (Simplified IEEE 13-Node Distribution System)
 
 
 ### 4.3 Results and Managerial Implications
