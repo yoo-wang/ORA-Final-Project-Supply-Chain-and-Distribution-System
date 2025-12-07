@@ -19,6 +19,9 @@
 [3.Data Collection and Analysis Result](#data-collection-and-analysis-result)
 
 [4.Conclusion](#conclusion)
+   * [4.1 Data Collection](#data-collection)
+   * [4.2 Analysis](#analysis)
+   * [4.3 Results and Managerial Implications](#results-and-managerial-implications)
 
 [5.References](#references)
   
@@ -46,6 +49,18 @@ This project implements a resilience-oriented optimization model to determine th
 ## 3. Data Collection and Analysis Result
 
 ## 4. Conclusion
+### 4.1 Data Collection
+> Basic Model (Simplified IEEE 13-Node Distribution System)
+
+
+---
+>
+
+
+### 4.2 Analysis
+
+
+### 4.3 Results and Managerial Implications
 
 ## 5. References
 Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020). A multi-disaster-scenario distributionally robust planning model for enhancing the resilience of distribution systems. International Journal of Electrical Power and Energy Systems, 122, Article 106161. https://doi.org/10.1016/j.ijepes.2020.106161
