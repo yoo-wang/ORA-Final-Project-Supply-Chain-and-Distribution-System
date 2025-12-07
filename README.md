@@ -50,7 +50,7 @@ This project implements a resilience-oriented optimization model to determine th
 
 ## 4. Conclusion
 ### 4.1 Data Collection
-> Basic Model (Simplified IEEE 13-Node Distribution System)
+> Phase 1: Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
 <br>
@@ -103,11 +103,13 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 | 11 | 133.33 | 0 |
 | 12 | 281 | 0 |
 | 13 | 56.67 | 0 |
+<br> 
 
 
+** Parameters, Objective Function, and Constraints **
 
 ---
->
+>Phase 2: 
 
 
 ### 4.2 Analysis
