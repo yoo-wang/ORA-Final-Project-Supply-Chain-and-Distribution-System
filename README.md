@@ -111,10 +111,11 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 
 
 ### 4.2 Analysis
-> Basic Model (Simplified IEEE 13-Node Distribution System)
+
 
 
 ### 4.3 Results and Managerial Implications
+> Basic Model (Simplified IEEE 13-Node Distribution System)
 
 ## 5. References
 Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020). A multi-disaster-scenario distributionally robust planning model for enhancing the resilience of distribution systems. International Journal of Electrical Power and Energy Systems, 122, Article 106161. https://doi.org/10.1016/j.ijepes.2020.106161
