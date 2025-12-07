@@ -4,7 +4,7 @@
 ## Editors and Advisor
 | Identity | Name | Contact Information |
 | :--- | :--- | :--- |
-| Editor/ Student | **胡銘哲 (Min-Zhe, Hu)** | [Email](mailto:youremail@example.com) |
+| Editor/ Student | **胡銘哲 (Min-Jhe, Hu)** | [Email](mailto:ryanhutech@gmail.com) |
 | Editor/ Student | **王宥惠 (Yu-Hui, Wang)** | [Email](mailto:huihui.162636@gmail.com) |
 | Advisor |  **李家岩 (Chia-Yen Lee, Ph.D.)**
 
@@ -17,11 +17,12 @@
 [2.Methodology](#methodology)
 
 [3.Data Collection and Analysis Result](#data-collection-and-analysis-result)
+   * [3.1 Data Collection](#data-collection)
+   * [3.2 Analysis](#analysis)
+   * [3.3 Results and Managerial Implications](#results-and-managerial-implications)
 
 [4.Conclusion](#conclusion)
-   * [4.1 Data Collection](#data-collection)
-   * [4.2 Analysis](#analysis)
-   * [4.3 Results and Managerial Implications](#results-and-managerial-implications)
+
 
 [5.References](#references)
   
@@ -48,8 +49,8 @@ This project implements a resilience-oriented optimization model to determine th
 
 ## 3. Data Collection and Analysis Result
 
-## 4. Conclusion
-### 4.1 Data Collection
+
+### 3.1 Data Collection
 > Phase 1: Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
@@ -113,9 +114,18 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 <br>
 
 Objective Funtion:<br>
-<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="350">
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="200">
 <br>
 Constraints:<br>
+<img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
+<img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
+<img src="Images/Operational Constraints_Line Capacity Constraints.png" alt="Operational Constraints_Line Capacity Constraints" width="700"><br>
+<img src="Images/Operational Constraints_DG Output Constraints.png" alt="Operational Constraints_DG Output Constraints" width="700"><br>
+<img src="Images/Operational Constraints_Load Shedding Constraints.png" alt="Operational Constraints_Load Shedding Constraints" width="700"><br>
+<img src="Images/Operational Constraints_Voltage Constraints.png" alt="Operational Constraints_Voltage Constraints" width="700"><br>
+
+
+
 
 
 
@@ -123,11 +133,8 @@ Constraints:<br>
 >Phase 2: 
 
 
-### 4.2 Analysis
+### 3.2 Analysis
 
-
-
-### 4.3 Results and Managerial Implications
 > Basic Model (Simplified IEEE 13-Node Distribution System)
 
 The primary goal for this phase, which is building a basic model, is to **minimize system performance loss**. We formulate the objective function as the minimization of total load shedding, defined as the summation of unserved active power across all nodes.  
@@ -146,7 +153,9 @@ In the following figures, the system status is represented as follows:
 <img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
 
+### 3.3 Results and Managerial Implications
 
+## 4. Conclusion
 
 ## 5. References
 Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020). A multi-disaster-scenario distributionally robust planning model for enhancing the resilience of distribution systems. International Journal of Electrical Power and Energy Systems, 122, Article 106161. https://doi.org/10.1016/j.ijepes.2020.106161
