@@ -57,15 +57,13 @@ We have structured the project into three key stages to achieve our goals step-b
 **Phase 3:** In this final phase, we introduce uncertainty by modeling two distinct attack scenarios ($S_1$ and $S_2$). Each scenario differs in the attacked location and number of compromised lines, as well as their probability of occurrence. Our objective is to analyze how optimal reinforcement strategies (line hardening and generator placement) shift under different risk profiles. Ultimately, we aim to calculate the minimum expected total cost weighted across all potential failure probabilities.<br>
 
 <img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900"><br>
-
+<br>
 > Basic Model (Simplified IEEE 13-Node Distribution System)
 
+First, we will introduce how we build our basic model.<br>
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
 <br>
 <img src="Images/IEEE-13nodes.png" alt="IEEE-13nodes" width="450">  Source: W. H. Kersting
-<br>
-<br>
-<br>
 <br>
 The following figure illustrates the **modified IEEE 13-node distribution system** used in this project. The diagram details the network configuration with the following parameters:  
 **Node indices:** Standard numbers (e.g., 1, 2, 10).  
@@ -118,11 +116,6 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 
 **Parameters, Objective Function, and Constraints**
 
-<br>
-
-Objective Funtion:<br>
-<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="300">
-<br>
 Constraints:<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
 <img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
@@ -137,6 +130,11 @@ Constraints:<br>
 <img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
 
 
+<br>
+
+Objective Funtion:<br>
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="300">
+<br>
 
 
 
