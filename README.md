@@ -114,9 +114,33 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 <br>
 <br>
 
-**Parameters, Objective Function, and Constraints**
+**Parameters, Objective Function, and Constraints** <br>
+<br>
+&bull; Parameters: <br>
+<br>
+Parameters for **phase 1** task:<br>
+| Notation | Description |
+| :--- | :--- |
+| R, X | The resistance (DC) and reactance (AC) of line $ij$. |
+| P_load | Active load at node $i$ and time $t$. |
+| Q_load | Reactive load at node $i$ and time $t$. |
+| Big_M | The big number used in model formulation and linearization. ( =10) |
 
-Constraints:<br>
+**Phase 2** extends the previous parameter set with the following:<br>
+| Notation | Description | Value we set |
+| :--- | :--- | :--- |
+| $C_i^g$ | The cost required to install a backup generator unit. | $1500 / kW |
+| $C_{ij}^h$ | The cost required to harden a line. | 400 per line |
+| $C$ | The penalty cost for unserved energy (value of lost load). | $14 / kW |
+| $P_i^{max}$ | The maximum power output of a backup generator. | 100 kW |
+| $H$ | The penalty cost for unserved energy (value of lost load). | $14 / kW |
+| $K$ | Attacked lines for different scenarios | example: 2,6,... |
+
+**Phase 3** extends the previous parameter set with the following:<br>
+
+
+<br>
+&bull; Constraints:<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
 <img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
 <br>
@@ -132,7 +156,7 @@ Constraints:<br>
 
 <br>
 
-Objective Funtion:<br>
+&bull; Objective Funtion:<br>
 <img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="300">
 <br>
 
