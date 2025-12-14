@@ -51,10 +51,13 @@ This project implements a resilience-oriented optimization model to determine th
 
 
 ### 3.1 Data Collection
-We have structured the project into three key stages to achieve our goals step-by-step. The figure below illustrates how we break down specific tasks to complete the project in phases.
-**Phase 1:** Initial Modeling & Flow Verification In this stage, we build the foundational power transmission model. We then simulate a fault at a target node to check two things: whether the power load is calculated correctly, and if electricity is properly distributed to every connected node.
-<img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900">
-<br>
+We have structured the project into three key stages to achieve our goals step-by-step. The figure below illustrates how we break down specific tasks to complete the project in phases.<br>
+**Phase 1:** In this stage, we build the foundational power transmission model. We then simulate several faults at different targets node to check two things: whether the power load is calculated correctly, and if electricity is properly distributed to every connected node.<br>
+**Phase 2:** In addition to the load shedding costs from Phase 1, we introduce costs for strengthening lines and installing generators. We assume specific scenarios where grid lines are targeted by attacks. The goal is to determine the minimum upfront investment required to minimize the overall damage to the system.<br>
+**Phase 3:** In this final phase, we introduce uncertainty by modeling two distinct attack scenarios ($S_1$ and $S_2$). Each scenario differs in the attacked location and number of compromised lines, as well as their probability of occurrence. Our objective is to analyze how optimal reinforcement strategies (line hardening and generator placement) shift under different risk profiles. Ultimately, we aim to calculate the minimum expected total cost weighted across all potential failure probabilities.<br>
+
+<img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900"><br>
+
 > Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
