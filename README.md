@@ -51,7 +51,11 @@ This project implements a resilience-oriented optimization model to determine th
 
 
 ### 3.1 Data Collection
-> Phase 1: Basic Model (Simplified IEEE 13-Node Distribution System)
+We have structured the project into three key stages to achieve our goals step-by-step. The figure below illustrates how we break down specific tasks to complete the project in phases.
+**Phase 1:** Initial Modeling & Flow Verification In this stage, we build the foundational power transmission model. We then simulate a fault at a target node to check two things: whether the power load is calculated correctly, and if electricity is properly distributed to every connected node.
+<img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900">
+<br>
+> Basic Model (Simplified IEEE 13-Node Distribution System)
 
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
 <br>
