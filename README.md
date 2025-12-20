@@ -135,7 +135,7 @@ Parameters for **phase 1** task:<br>
 | $K$ | Attacked lines for different scenarios | example: 2,6,... |
 
 **Phase 3** extends the previous parameter set with the following:<br>
-We consider **2 distinct disaster scenarios (A and B)** combined with **3 different probability sets**, resulting in a total of **6 simulation cases**. The specific assumptions for these scenarios are outlined below:
+We consider **2 distinct disaster scenarios (A and B)** combined with **3 different probability sets (1,2,3)**, resulting in a total of **6 simulation cases**. The specific assumptions for these scenarios are outlined below:
 | Distinct Disaster Scenario | The Number of Line Broken | Broken Line ID | 
 | :--- | :--- | :--- |
 | A | Disaster 1 = 2<br> Disaster 2 = 5 | 2, 11<br> 2, 5, 8, 14, 15 |
@@ -151,22 +151,43 @@ We consider **2 distinct disaster scenarios (A and B)** combined with **3 differ
 &bull; Constraints:<br>
 
 Constraints for **phase 1** task:<br>
-<img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
-<img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
 <br>
+Following equation shows Power Balance. It ensures that for every node, the net power flowing OUT minus the power flowing IN must equal the power local generation made minus the net load demand. The first equation is for active power flow, the second is for reactive power flow.
+<img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
+<br>
+Following equation manages Voltage Drop using a Big-M formulation. The logic is: if the line is connected ($v=1$), the voltage drop physics are strictly enforced. If the line is cut ($v=0$), the Big-M removes the restriction, so the voltages on both sides become independent.
+<img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
+Following equation sets the Line Capacity Limits. It ensures that power flow on any connected line does not exceed its maximum rating.
 <img src="Images/Operational Constraints_Line Capacity Constraints.png" alt="Operational Constraints_Line Capacity Constraints" width="700"><br>
+<br>
+Following equation defines the DG Output Limits. It ensures backup generators do not produce more power than their physical capacity.
 <img src="Images/Operational Constraints_DG Output Constraints.png" alt="Operational Constraints_DG Output Constraints" width="700"><br>
+<br>
+Following equation defines Actual Load Shedding. This means that we cannot cut off more power than the original demand at any node.
 <img src="Images/Operational Constraints_Load Shedding Constraints.png" alt="Operational Constraints_Load Shedding Constraints" width="700"><br>
+<br>
+Following equation shows Voltage Safety, keeping every node’s voltage within the safe minimum and maximum limits.
 <img src="Images/Operational Constraints_Voltage Constraints.png" alt="Operational Constraints_Voltage Constraints" width="700"><br>
 <br>
+Following equation defines our Switching Logic. Even if a line is physically working ($v^d$), we can actively choose to switch it off ($v^w$).The Final Status ($v^q$) follows a strict rule: The line is active AND the switch is turned on. If either condition is zero, power cannot flow through the node.
 <img src="Images/Line Status Logic_Switching.png" alt="Line Status Logic_Switching" width="700"><br>
 <br>
+Following equation ensures the grid remains radial—meaning a tree-like structure with no loops, where disconnected areas form independent microgrids. We modified the original equation from paper into an inequality. This strictly limits the number of active lines to be less than the number of nodes minus islands, guaranteeing a safe, loop-free system.
 <img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
+<br>
+<br>
+To achieve **phase 2 and 3** task, these constraints are also included:<br>
+<br>
+Following equation defines that the total number of hardened lines must not exceed our pre-set limit ($H$). Similarly, the number of installed backup generators must also remain within the initial budget ($G$).
+<img src="Images/BudgetConstraints.png" alt="Budget Constraints" width="700"><br>
+<br>
+Following equation shows that the output active power p and reactive power Q of generator must not exceed its own generator power limit.
+<img src="Images/DG Output Limits Budget Constraints.png" alt="DG Output Limits Budget Constraints" width="700"><br>
+<br>
+Following equation determines the Line Status - whether a line is operational depends on two factors: whether it was hardened and whether it was destroyed by the disaster.<br> 
+<img src="Images/Survival Constraint.png" alt="Survival Constraint" width="700"><br>
+<br>
 
-To achieve **phase 2** task, these constraints are also included:<br>
-
-
-To achieve **phase 3** task, these constraints are also included:<br>
 
 <br>
 
