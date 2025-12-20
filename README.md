@@ -58,8 +58,6 @@ We have structured the project into three key stages to achieve our goals step-b
 
 <img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900"><br>
 <br>
-> Basic Model (Simplified IEEE 13-Node Distribution System)
-
 First, we will introduce how we build our basic model.<br>
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
 <br>
@@ -137,10 +135,22 @@ Parameters for **phase 1** task:<br>
 | $K$ | Attacked lines for different scenarios | example: 2,6,... |
 
 **Phase 3** extends the previous parameter set with the following:<br>
+We consider **2 distinct disaster scenarios (A and B)** combined with **3 different probability sets**, resulting in a total of **6 simulation cases**. The specific assumptions for these scenarios are outlined below:
+| Distinct Disaster Scenario | The Number of Line Broken | Broken Line ID | 
+| :--- | :--- | :--- |
+| A | Disaster 1 = 2<br> Disaster 2 = 5 | 2, 11<br> 2, 5, 8, 14, 15 |
+| B | Disaster 1 = 2<br> Disaster 2 = 5 | 6, 11<br> 2, 5, 8, 14, 15 |
 
+| Probability Set | Probability for Disaster 1 | Probability for Disaster 2 | 
+| :--- | :--- | :--- |
+| 1 | 90% | 10% |
+| 2 | 50% | 50% |
+| 3 | 10% | 90% |
 
 <br>
 &bull; Constraints:<br>
+
+Constraints for **phase 1** task:<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
 <img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
 <br>
@@ -153,6 +163,10 @@ Parameters for **phase 1** task:<br>
 <br>
 <img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
 
+To achieve **phase 2** task, these constraints are also included:<br>
+
+
+To achieve **phase 3** task, these constraints are also included:<br>
 
 <br>
 
