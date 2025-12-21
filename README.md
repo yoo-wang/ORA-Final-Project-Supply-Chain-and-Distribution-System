@@ -190,6 +190,7 @@ Following equation determines the Line Status - whether a line is operational de
 <br>
 &bull; Variables:<br>
 <br>
+Following shows the variables used in **Phase 1** task. First, we have Line Status Variables. These are binary values that simply tell us if a line is switched on or off. Second are the Flow Variables. These track the actual active and reactive power flowing through the lines. Third are Recourse Variables. These represent load shedding—the power we are forced to cut during an emergency when delivery is impossible. Finally, we have the State Variables, which represent the square of the nodal voltage. We constrain these within a safety range of plus or minus 10% to ensure system stability.<br>
 <img src="Images/Variables for Phase 1.png" alt="Variables for Phase 1" width="600"><br>
 <br>
 <img src="Images/Variables for Phase 2.png" alt="Variables for Phase 2" width="600"><br>
