@@ -139,7 +139,7 @@ We consider **2 distinct disaster scenarios (A and B)** combined with **3 differ
 | Distinct Disaster Scenario | The Number of Line Broken | Broken Line ID | 
 | :--- | :--- | :--- |
 | A | Disaster 1 = 2<br> Disaster 2 = 5 | 2, 11<br> 2, 5, 8, 14, 15 |
-| B | Disaster 1 = 2<br> Disaster 2 = 5 | 6, 11<br> 2, 5, 8, 14, 15 |
+| B | Disaster 1 = 3<br> Disaster 2 = 5 | 4, 6, 11<br> 2, 5, 8, 14, 15 |
 
 | Probability Set | Probability for Disaster 1 | Probability for Disaster 2 | 
 | :--- | :--- | :--- |
@@ -192,23 +192,29 @@ Following equation determines the Line Status - whether a line is operational de
 <br>
 
 &bull; Objective Funtion:<br>
+<br>
+The objective function varies across different phases. In this section, we present the specific mathematical formulations for all three phases.<br>
+<br>
+Here defines our Phase 1 Objective Function.<br>
+Our operational goal is to minimize the total load shedding under a specific scenario.
+In our Gurobi implementation, we define this function Q simply as the sum of Delta P, which represents the total active power cut off from all nodes.
 <img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
 <br>
+In Phase 2, we add investment costs into our objective function.<br>
+We need to minimize the total cost, which is the sum of investment costs for line hardening, DG installation, and the load shedding penalty.
+There’s a little difference between our objective function and the one in the paper: our current model simplifies the load shedding term. Unlike the original paper, we didn’t include the probability-weighted ambiguity sets for multiple disaster scenarios, we only focusing first on the deterministic investment decisions.<br>
 <img src="Images/Objective Function for Stage 2.png" alt="Objective Function for Stage 2" width="450"><br>
 <br>
+The formulation in Phase 3 is similar to that of Phase 2. The key difference lies in modifying the objective function to account for the probability of occurrence across various disaster scenarios.<br>
 <img src="Images/Objective Function for Stage 3.png" alt="Objective Function for Stage 3" width="450"><br>
 <br>
 
 
 
 
----
->Phase 2: 
-
-
 ### 3.2 Analysis
 
-> Basic Model (Simplified IEEE 13-Node Distribution System)
+> Phase 1 : Basic Model (Simplified IEEE 13-Node Distribution System)
 
 The primary goal for this phase, which is building a basic model, is to **minimize system performance loss**. We formulate the objective function as the minimization of total load shedding, defined as the summation of unserved active power across all nodes.  
 To ensure physical realism and maintain a logical radial topology, a minimal penalty cost for switching operations has been incorporated to prevent "ghost flows" (mathematical loops).  
@@ -225,6 +231,13 @@ In the following figures, the system status is represented as follows:
 <img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600">
 <img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
+<br>
+
+> Phase 2 : Deterministic Resilience Planning
+<br>
+
+
+> Phase 3 : Two-Scenario Robust Planning
 
 ### 3.3 Results and Managerial Implications
 
