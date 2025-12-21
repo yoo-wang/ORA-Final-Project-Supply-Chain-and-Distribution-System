@@ -190,7 +190,11 @@ Following equation determines the Line Status - whether a line is operational de
 <br>
 &bull; Variables:<br>
 <br>
-<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
+<img src="Images/Variables for Phase 1.png" alt="Variables for Phase 1" width="600"><br>
+<br>
+<img src="Images/Variables for Phase 2.png" alt="Variables for Phase 2" width="600"><br>
+<br>
+<img src="Images/Variables for Phase 3.png" alt="Variables for Phase 3" width="600"><br>
 <br>
 
 &bull; Objective Funtion:<br>
