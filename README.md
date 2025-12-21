@@ -1,4 +1,4 @@
-# ORA Final Project : Resilient Power Distribution Planning via Two-Stage Robust Optimization
+# ORA Final Project : <br>Resilient Power Distribution Planning via Two-Stage Robust Optimization
 **Implementation of a Distributionally Robust Optimization Model on IEEE 13-Node System**
 
 ## Editors and Advisor
