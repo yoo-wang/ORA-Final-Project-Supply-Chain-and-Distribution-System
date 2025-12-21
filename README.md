@@ -187,8 +187,10 @@ Following equation shows that the output active power p and reactive power Q of 
 Following equation determines the Line Status - whether a line is operational depends on two factors: whether it was hardened and whether it was destroyed by the disaster.<br> 
 <img src="Images/Survival Constraint.png" alt="Survival Constraint" width="700"><br>
 <br>
-
-
+<br>
+&bull; Variables:<br>
+<br>
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
 <br>
 
 &bull; Objective Funtion:<br>
@@ -197,7 +199,7 @@ The objective function varies across different phases. In this section, we prese
 <br>
 Here defines our Phase 1 Objective Function.<br>
 Our operational goal is to minimize the total load shedding under a specific scenario.
-In our Gurobi implementation, we define this function Q simply as the sum of Delta P, which represents the total active power cut off from all nodes.
+In our Gurobi implementation, we define this function Q simply as the sum of Delta P, which represents the total active power cut off from all nodes.<br>
 <img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
 <br>
 In Phase 2, we add investment costs into our objective function.<br>
