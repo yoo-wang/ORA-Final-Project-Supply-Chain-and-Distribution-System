@@ -192,7 +192,11 @@ Following equation determines the Line Status - whether a line is operational de
 <br>
 
 &bull; Objective Funtion:<br>
-<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="300">
+<img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
+<br>
+<img src="Images/Objective Function for Stage 2.png" alt="Objective Function for Stage 2" width="450"><br>
+<br>
+<img src="Images/Objective Function for Stage 3.png" alt="Objective Function for Stage 3" width="450"><br>
 <br>
 
 
