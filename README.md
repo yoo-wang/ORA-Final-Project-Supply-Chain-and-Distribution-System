@@ -235,8 +235,10 @@ In the following figures, the system status is represented as follows:
 
 > Phase 2 : Deterministic Resilience Planning
 <br>
-
-
+<img src="Images/Implement Phase 2   Example 1.png" alt="Implement Phase 2   Example 1" width="800">
+<img src="Images/Implement Phase 2   Example 2.png" alt="Implement Phase 2   Example 2" width="800">
+<br>
+<br>
 > Phase 3 : Two-Scenario Robust Planning
 
 ### 3.3 Results and Managerial Implications
