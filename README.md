@@ -152,36 +152,36 @@ We consider **2 distinct disaster scenarios (A and B)** combined with **3 differ
 
 Constraints for **phase 1** task:<br>
 <br>
-Following equation shows Power Balance. It ensures that for every node, the net power flowing OUT minus the power flowing IN must equal the power local generation made minus the net load demand. The first equation is for active power flow, the second is for reactive power flow.
+Following equation shows Power Balance. It ensures that for every node, the net power flowing OUT minus the power flowing IN must equal the power local generation made minus the net load demand. The first equation is for active power flow, the second is for reactive power flow.<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
 <br>
-Following equation manages Voltage Drop using a Big-M formulation. The logic is: if the line is connected ($v=1$), the voltage drop physics are strictly enforced. If the line is cut ($v=0$), the Big-M removes the restriction, so the voltages on both sides become independent.
+Following equation manages Voltage Drop using a Big-M formulation. The logic is: if the line is connected ($v=1$), the voltage drop physics are strictly enforced. If the line is cut ($v=0$), the Big-M removes the restriction, so the voltages on both sides become independent.<br>
 <img src="Images/Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop.png" alt="Constraints_Linearized DistFlow Voltage Equation &  Voltage Drop" width="700"><br>
-Following equation sets the Line Capacity Limits. It ensures that power flow on any connected line does not exceed its maximum rating.
+Following equation sets the Line Capacity Limits. It ensures that power flow on any connected line does not exceed its maximum rating.<br>
 <img src="Images/Operational Constraints_Line Capacity Constraints.png" alt="Operational Constraints_Line Capacity Constraints" width="700"><br>
 <br>
-Following equation defines the DG Output Limits. It ensures backup generators do not produce more power than their physical capacity.
+Following equation defines the DG Output Limits. It ensures backup generators do not produce more power than their physical capacity.<br>
 <img src="Images/Operational Constraints_DG Output Constraints.png" alt="Operational Constraints_DG Output Constraints" width="700"><br>
 <br>
-Following equation defines Actual Load Shedding. This means that we cannot cut off more power than the original demand at any node.
+Following equation defines Actual Load Shedding. This means that we cannot cut off more power than the original demand at any node.<br>
 <img src="Images/Operational Constraints_Load Shedding Constraints.png" alt="Operational Constraints_Load Shedding Constraints" width="700"><br>
 <br>
-Following equation shows Voltage Safety, keeping every node’s voltage within the safe minimum and maximum limits.
+Following equation shows Voltage Safety, keeping every node’s voltage within the safe minimum and maximum limits.<br>
 <img src="Images/Operational Constraints_Voltage Constraints.png" alt="Operational Constraints_Voltage Constraints" width="700"><br>
 <br>
-Following equation defines our Switching Logic. Even if a line is physically working ($v^d$), we can actively choose to switch it off ($v^w$).The Final Status ($v^q$) follows a strict rule: The line is active AND the switch is turned on. If either condition is zero, power cannot flow through the node.
+Following equation defines our Switching Logic. Even if a line is physically working ($v^d$), we can actively choose to switch it off ($v^w$).The Final Status ($v^q$) follows a strict rule: The line is active AND the switch is turned on. If either condition is zero, power cannot flow through the node.<br>
 <img src="Images/Line Status Logic_Switching.png" alt="Line Status Logic_Switching" width="700"><br>
 <br>
-Following equation ensures the grid remains radial—meaning a tree-like structure with no loops, where disconnected areas form independent microgrids. We modified the original equation from paper into an inequality. This strictly limits the number of active lines to be less than the number of nodes minus islands, guaranteeing a safe, loop-free system.
+Following equation ensures the grid remains radial—meaning a tree-like structure with no loops, where disconnected areas form independent microgrids. We modified the original equation from paper into an inequality. This strictly limits the number of active lines to be less than the number of nodes minus islands, guaranteeing a safe, loop-free system.<br>
 <img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
 <br>
 <br>
 To achieve **phase 2 and 3** task, these constraints are also included:<br>
 <br>
-Following equation defines that the total number of hardened lines must not exceed our pre-set limit ($H$). Similarly, the number of installed backup generators must also remain within the initial budget ($G$).
+Following equation defines that the total number of hardened lines must not exceed our pre-set limit ($H$). Similarly, the number of installed backup generators must also remain within the initial budget ($G$).<br>
 <img src="Images/BudgetConstraints.png" alt="Budget Constraints" width="700"><br>
 <br>
-Following equation shows that the output active power p and reactive power Q of generator must not exceed its own generator power limit.
+Following equation shows that the output active power p and reactive power Q of generator must not exceed its own generator power limit.<br>
 <img src="Images/DG Output Limits Budget Constraints.png" alt="DG Output Limits Budget Constraints" width="700"><br>
 <br>
 Following equation determines the Line Status - whether a line is operational depends on two factors: whether it was hardened and whether it was destroyed by the disaster.<br> 
@@ -193,8 +193,10 @@ Following equation determines the Line Status - whether a line is operational de
 Following shows the variables used in **Phase 1** task. First, we have Line Status Variables. These are binary values that simply tell us if a line is switched on or off. Second are the Flow Variables. These track the actual active and reactive power flowing through the lines. Third are Recourse Variables. These represent load shedding—the power we are forced to cut during an emergency when delivery is impossible. Finally, we have the State Variables, which represent the square of the nodal voltage. We constrain these within a safety range of plus or minus 10% to ensure system stability.<br>
 <img src="Images/Variables for Phase 1.png" alt="Variables for Phase 1" width="600"><br>
 <br>
+Here we have additional variables for **Phase 2** task: Line Hardening Decision variables and DG Allocation Decision variable deciding which lines to harden and where to place generators. We also have a DG Power Output variable that can tell the output of generator. The last variable Attack Status indicates whether a line survives after an attack or damaged.<br>
 <img src="Images/Variables for Phase 2.png" alt="Variables for Phase 2" width="600"><br>
 <br>
+In **Phase 3** task, we need to include following variables, which are similar to Phase 1, and also Phase 2 variables to finish this task. The difference between phase 3 and those of phase 1 is that different scenarios are included.<br>
 <img src="Images/Variables for Phase 3.png" alt="Variables for Phase 3" width="600"><br>
 <br>
 
