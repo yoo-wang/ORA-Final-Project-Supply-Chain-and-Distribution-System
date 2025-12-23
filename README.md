@@ -245,7 +245,8 @@ In the following figures, the system status is represented as follows:
 4. This figure illustrates the network of the Phase 1 basic model under a severe triple-failure scenario where L2, L11, and L15 are simultaneously damaged. The failure of L11 and L15 completely isolates the upper section of the grid (Nodes 10, 11, 12, 13) from the main power source. With no alternative path available, this entire section experiences a blackout, contributing significantly to the 551.00 kW total load shedding.<br>
 <img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
-From these examples, we can confirm that our grid topology is built correctly. Next, we will move on to the next phase. If you need the source code for the grid, please refer to [code](codes/phase_1_Basic%20Model.py)
+From these examples, we can confirm that our grid topology is built correctly. Next, we will move on to the next phase. If you need the source code for the grid, please refer to [code](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/blob/main/codes/phase_1_Basic%20Model.py)
+<br>
 <br>
 
 > Phase 2 : Deterministic Resilience Planning
