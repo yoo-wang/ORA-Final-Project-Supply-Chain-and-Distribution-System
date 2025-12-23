@@ -232,29 +232,66 @@ In the following figures, the system status is represented as follows:
  * Green Lines (Switch = 1): Represent active lines carrying power flow.  
  * Red Dashed Lines (Switch = 0): Represent broken or open lines with no flow.  
  * The numerical labels indicate the magnitude of active power flow on each node.
-<br>  
- These result figures showing that our basic model is working properly.
 <br>
 <br>
-1. This result validates our basic model structure. Since Line 1 (L1) is the main power source, breaking it cuts off the entire network, resulting in 100% load shedding (1155.35 kW), which equal to the sum of magnitude of active power flow on each node. This confirms that our grid topology and power flow logic are built correctly.<br>
+
+This result validates our basic model structure. Since Line 1 (L1) is the main power source, breaking it cuts off the entire network, resulting in 100% load shedding (1155.35 kW), which equal to the sum of magnitude of active power flow on each node. This confirms that our grid topology and power flow logic are built correctly.<br>
 <img src="Images/Example_Broken 1 Line (L1).png" alt="Example_Broken 1 Line (L1)" width="600"><br>
-2. This figure illustrates the network of the Phase 1 basic model under a Line 11 (L11) failure scenario. L11 is marked with a dashed red line, indicating that the line is damaged and disconnected; therefore, no current flows through it. L6 and L10 remain in an open state (zero current). This is to strictly adhere to the Radial Topology constraint of distribution networks, preventing the formation of closed loops and ensuring operational safety. L12 shows no current flow primarily because the connected Node 10 has a load demand of 0 kW. <br>
-<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="600"><br>
-3. This figure illustrates the network of the Phase 1 basic model under a dual-failure scenario where both Line 2 (L2) and Line 7 (L7) are damaged simultaneously. With the main feeder line L2 broken, the system cannot supply the right side of the grid directly. The model successfully reroutes a significant amount of power (899 kW) through the upper loop (L11 -> L12 -> L13 -> L14 -> L15) to reach Node 3 and its downstream nodes. L9 remains open (dashed red line) to maintain the Radial Topology. <br>
-<img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600"><br>
-4. This figure illustrates the network of the Phase 1 basic model under a severe triple-failure scenario where L2, L11, and L15 are simultaneously damaged. The failure of L11 and L15 completely isolates the upper section of the grid (Nodes 10, 11, 12, 13) from the main power source. With no alternative path available, this entire section experiences a blackout, contributing significantly to the 551.00 kW total load shedding.<br>
-<img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
+This figure illustrates the network of the Phase 1 basic model under a Line 11 (L11) failure scenario. L11 is marked with a dashed red line, indicating that the line is damaged and disconnected; therefore, no current flows through it. L6 and L10 remain in an open state (zero current). This is to strictly adhere to the Radial Topology constraint of distribution networks, preventing the formation of closed loops and ensuring operational safety. L12 shows no current flow primarily because the connected Node 10 has a load demand of 0 kW. <br>
+<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="600"><br>
+<br>
+This figure illustrates the network of the Phase 1 basic model under a dual-failure scenario where both Line 2 (L2) and Line 7 (L7) are damaged simultaneously. With the main feeder line L2 broken, the system cannot supply the right side of the grid directly. The model successfully reroutes a significant amount of power (899 kW) through the upper loop (L11 -> L12 -> L13 -> L14 -> L15) to reach Node 3 and its downstream nodes. L9 remains open (dashed red line) to maintain the Radial Topology. <br>
+<img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600"><br>
+<br>
+This figure illustrates the network of the Phase 1 basic model under a severe triple-failure scenario where L2, L11, and L15 are simultaneously damaged. The failure of L11 and L15 completely isolates the upper section of the grid (Nodes 10, 11, 12, 13) from the main power source. With no alternative path available, this entire section experiences a blackout, contributing significantly to the 551.00 kW total load shedding.<br>
+<img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
+
 From these examples, we can confirm that our grid topology is built correctly. Next, we will move on to the next phase. If you need the source code for the grid, please refer to [our code example](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/blob/main/codes/phase_1_Basic%20Model.py)
 <br>
 <br>
 
 ---
 **Phase 2 : Deterministic Resilience Planning** <br>
+In this phase, we introduce the costs for line hardening and installing backup generators. At the same time, we assume specific scenarios where grid lines are targeted by attacks. Through the simulation results, we will demonstrate our ability to determine the minimum upfront investment required to minimize the overall damage to the system.<br>
+ * Cost for hardening a line : $400
+ * Cost for installing a generator : $1.5/kW
+ * Cost for load shedding : $14/kW
+ * Capacity of a generator : 100kW
 <br>
-<img src="Images/Implement Phase 2   Example 1.png" alt="Implement Phase 2   Example 1" width="800">
-<img src="Images/Implement Phase 2   Example 2.png" alt="Implement Phase 2   Example 2" width="800">
 <br>
+Example 1
+<br>
+
+ * Budget for line hardening : 2 lines
+ * Budget for generator installation : 1 generator<br>
+<img src="Images/Implement Phase 2   Example 1.png" alt="Implement Phase 2   Example 1" width="800"><br>
+This figure illustrates the first example of optimization results of the Stage 2 Deterministic Resilience Planning model.<br>
+In this specific scenario, four lines—Line 2, Line 6, Line 11, and Line 15—were attacked. The model made an intelligent investment decision to harden Line 2 (L2) and Line 15 (L15), marked in solid blue. L2 is a critical backbone line. Hardening it ensures power reaches the central hub (Node 3) despite the attack. L15 is crucial for feeding the upper sub-grid (Nodes 11, 12, 13). By hardening L15, the system ensures connectivity to these nodes even when other paths fail.<br>
+Line 6 (L6) and Line 11 (L11) were targeted but not hardened (marked in red dotted lines). Consequently, they were destroyed and disconnected. The model calculated that it was more cost-effective to let these lines break and reroute power than to pay for their hardening.<br>
+Despite losing two lines, the Total Load Shedding is 0 kW. All nodes remain blue (powered). The combination of line hardening and network reconfiguration allowed the grid to maintain 100% service continuity.<br>
+Cost Analysis:The Total Cost is $800, which consists entirely of investment costs :
+ * Hardening Cost: 2 lines (L2, L15) * $400/line = $800.
+ * Load Shedding Penalty: 0 kW * $14/kWh = $0.
+ * DG Installation: 0 units = $0.<br>
+
+<br>
+Example 2
+<br>
+
+ * Budget for line hardening : 1 line
+ * Budget for generator installation : 1 generator <br>
+<img src="Images/Implement Phase 2   Example 2.png" alt="Implement Phase 2   Example 2" width="800"><br>
+This figure presents a more severe scenario where four critical lines (L2, L6, L11, L15) are simultaneously targeted by an attack.<br>
+The model chose to harden Line 6 (L6), shown in solid blue.Reasoning: With the main feeder L2 destroyed (red dotted), the only way to power the right side of the grid (Nodes 3, 4, 7, 8, 9) is through the bottom path. L6 acts as the critical bridge in this path. Hardening it ensures that power flows from the source -> L4 -> L5 -> L6 -> L7, successfully saving the majority of the network. <br>
+A Distributed Generator (DG) was allocated at Node 12 (marked Yellow). The attacks on L11 and L15 completely isolated the upper section (Nodes 11, 12, 13). Without a connection to the main grid, the model placed a DG at Node 12 (the largest load center in that area) to provide partial power. <br>
+Nodes 11 and 13 are marked in Red, indicating they are fully shed (blackout).Node 12 is partially shed. Although it has a DG, its demand (281 kW) exceeds the DG's capacity (100 kW). The DG powers as much of Node 12 as possible, but there is no surplus power to share with neighbors 11 and 13.<br>
+The high total cost ($5,744) reflects the trade-off between limited investment budget and unavoidable damage: <br>
+
+ * Hardening Cost: 1 line (L6) * $400/line = $400
+ * DG Installation : 1 unit at Node 12  = $550.
+ * Load Shedding Penalty: The remaining deficit (Node 11, 13, and part of 12) results in a load shedding penalty of $5,194.
+
 <br>
 > Phase 3 : Two-Scenario Robust Planning
 
