@@ -55,9 +55,10 @@ We have structured the project into three key stages to achieve our goals step-b
 **Phase 1:** In this stage, we build the foundational power transmission model. We then simulate several faults at different targets node to check two things: whether the power load is calculated correctly, and if electricity is properly distributed to every connected node.<br>
 **Phase 2:** In addition to the load shedding costs from Phase 1, we introduce costs for strengthening lines and installing generators. We assume specific scenarios where grid lines are targeted by attacks. The goal is to determine the minimum upfront investment required to minimize the overall damage to the system.<br>
 **Phase 3:** In this final phase, we introduce uncertainty by modeling two distinct attack scenarios ($S_1$ and $S_2$). Each scenario differs in the attacked location and number of compromised lines, as well as their probability of occurrence. Our objective is to analyze how optimal reinforcement strategies (line hardening and generator placement) shift under different risk profiles. Ultimately, we aim to calculate the minimum expected total cost weighted across all potential failure probabilities.<br>
-
 <img src="Images/different work in 3 phase.png" alt="different work in 3 phase" width="900"><br>
 <br>
+
+---
 First, we will introduce how we build our basic model.<br>
 This project references the **IEEE 13-node Test Feeder** as the test model. It is a standard radial distribution test system featuring transformers, voltage regulators, and switches, commonly used as a benchmark for power flow analysis in distribution networks.
 <br>
@@ -109,14 +110,14 @@ Regarding the load data, we assume that the reactive power (Q) for all nodes is 
 | 11 | 133.33 | 0 |
 | 12 | 281 | 0 |
 | 13 | 56.67 | 0 |
-<br>
-<br>
+
+---
 
 **Parameters, Objective Function, and Constraints** <br>
 <br>
-&bull; Parameters: <br>
+&bull; **Parameters :** <br>
 <br>
-Parameters for **phase 1** task:<br>
+Parameters for *phase 1* task:<br>
 | Notation | Description |
 | :--- | :--- |
 | R, X | The resistance (DC) and reactance (AC) of line $ij$. |
@@ -124,7 +125,7 @@ Parameters for **phase 1** task:<br>
 | Q_load | Reactive load at node $i$ and time $t$. |
 | Big_M | The big number used in model formulation and linearization. ( =10) |
 
-**Phase 2** extends the previous parameter set with the following:<br>
+*Phase 2* extends the previous parameter set with the following:<br>
 | Notation | Description | Value we set |
 | :--- | :--- | :--- |
 | $C_i^g$ | The cost required to install a backup generator unit. | $1500 / kW |
@@ -134,12 +135,13 @@ Parameters for **phase 1** task:<br>
 | $H$ | The penalty cost for unserved energy (value of lost load). | $14 / kW |
 | $K$ | Attacked lines for different scenarios | example: 2,6,... |
 
-**Phase 3** extends the previous parameter set with the following:<br>
-We consider **2 distinct disaster scenarios (A and B)** combined with **3 different probability sets (1,2,3)**, resulting in a total of **6 simulation cases**. The specific assumptions for these scenarios are outlined below:
+*Phase 3* extends the previous parameter set with the following:<br>
+We consider *2 distinct disaster scenarios (A and B)* combined with *3 different probability sets (1,2,3)*, resulting in a total of *6 simulation cases*. The specific assumptions for these scenarios are outlined below:
 | Distinct Disaster Scenario | The Number of Line Broken | Broken Line ID | 
 | :--- | :--- | :--- |
-| A | Disaster 1 = 2<br> Disaster 2 = 5 | 2, 11<br> 2, 5, 8, 14, 15 |
-| B | Disaster 1 = 3<br> Disaster 2 = 5 | 4, 6, 11<br> 2, 5, 8, 14, 15 |
+| A | 2 | 2, 11 |
+| B | 3 | 4, 6, 11 |
+| C | 5 | 2, 5, 8, 14, 15 |
 
 | Probability Set | Probability for Disaster 1 | Probability for Disaster 2 | 
 | :--- | :--- | :--- |
@@ -148,9 +150,10 @@ We consider **2 distinct disaster scenarios (A and B)** combined with **3 differ
 | 3 | 10% | 90% |
 
 <br>
-&bull; Constraints:<br>
 
-Constraints for **phase 1** task:<br>
+&bull; **Constraints :** <br>
+
+Constraints for *phase 1* task:<br>
 <br>
 Following equation shows Power Balance. It ensures that for every node, the net power flowing OUT minus the power flowing IN must equal the power local generation made minus the net load demand. The first equation is for active power flow, the second is for reactive power flow.<br>
 <img src="Images/Constraints_Active(P) and Reactive(Q)  Power Balance.png" alt="Constraints_Active(P) and Reactive(Q)  Power Balance" width="700"><br>
@@ -176,7 +179,7 @@ Following equation ensures the grid remains radial—meaning a tree-like structu
 <img src="Images/Topology Constraints_Radial Constraint (Modified for Phase 1).png" alt="Topology Constraints_Radial Constraint (Modified for Phase 1)" width="700"><br>
 <br>
 <br>
-To achieve **phase 2 and 3** task, these constraints are also included:<br>
+To achieve *phase 2 and 3* task, these constraints are also included:<br>
 <br>
 Following equation defines that the total number of hardened lines must not exceed our pre-set limit ($H$). Similarly, the number of installed backup generators must also remain within the initial budget ($G$).<br>
 <img src="Images/BudgetConstraints.png" alt="Budget Constraints" width="700"><br>
@@ -187,43 +190,40 @@ Following equation shows that the output active power p and reactive power Q of 
 Following equation determines the Line Status - whether a line is operational depends on two factors: whether it was hardened and whether it was destroyed by the disaster.<br> 
 <img src="Images/Survival Constraint.png" alt="Survival Constraint" width="700"><br>
 <br>
-<br>
-&bull; Variables:<br>
-<br>
-Following shows the variables used in **Phase 1** task. First, we have Line Status Variables. These are binary values that simply tell us if a line is switched on or off. Second are the Flow Variables. These track the actual active and reactive power flowing through the lines. Third are Recourse Variables. These represent load shedding—the power we are forced to cut during an emergency when delivery is impossible. Finally, we have the State Variables, which represent the square of the nodal voltage. We constrain these within a safety range of plus or minus 10% to ensure system stability.<br>
+
+&bull; **Variables :** <br>
+
+Following shows the variables used in *Phase 1* task. First, we have Line Status Variables. These are binary values that simply tell us if a line is switched on or off. Second are the Flow Variables. These track the actual active and reactive power flowing through the lines. Third are Recourse Variables. These represent load shedding—the power we are forced to cut during an emergency when delivery is impossible. Finally, we have the State Variables, which represent the square of the nodal voltage. We constrain these within a safety range of plus or minus 10% to ensure system stability.<br>
 <img src="Images/Variables for Phase 1.png" alt="Variables for Phase 1" width="600"><br>
 <br>
-Here we have additional variables for **Phase 2** task: Line Hardening Decision variables and DG Allocation Decision variable deciding which lines to harden and where to place generators. We also have a DG Power Output variable that can tell the output of generator. The last variable Attack Status indicates whether a line survives after an attack or damaged.<br>
+Here we have additional variables for *Phase 2* task: Line Hardening Decision variables and DG Allocation Decision variable deciding which lines to harden and where to place generators. We also have a DG Power Output variable that can tell the output of generator. The last variable Attack Status indicates whether a line survives after an attack or damaged.<br>
 <img src="Images/Variables for Phase 2.png" alt="Variables for Phase 2" width="600"><br>
 <br>
-In **Phase 3** task, we need to include following variables, which are similar to Phase 1, and also Phase 2 variables to finish this task. The difference between phase 3 and those of phase 1 is that different scenarios are included.<br>
+In *Phase 3* task, we need to include following variables, which are similar to Phase 1, and also Phase 2 variables to finish this task. The difference between phase 3 and those of phase 1 is that different scenarios are included.<br>
 <img src="Images/Variables for Phase 3.png" alt="Variables for Phase 3" width="600"><br>
 <br>
 
-&bull; Objective Funtion:<br>
+&bull; **Objective Funtion:** <br>
 <br>
 The objective function varies across different phases. In this section, we present the specific mathematical formulations for all three phases.<br>
 <br>
-Here defines our Phase 1 Objective Function.<br>
+Here defines our *Phase 1* Objective Function.<br>
 Our operational goal is to minimize the total load shedding under a specific scenario.
 In our Gurobi implementation, we define this function Q simply as the sum of Delta P, which represents the total active power cut off from all nodes.<br>
 <img src="Images/Objective Function for Stage 1.png" alt="Objective Function for Stage 1" width="450"><br>
 <br>
-In Phase 2, we add investment costs into our objective function.<br>
+In *Phase 2*, we add investment costs into our objective function.<br>
 We need to minimize the total cost, which is the sum of investment costs for line hardening, DG installation, and the load shedding penalty.
 There’s a little difference between our objective function and the one in the paper: our current model simplifies the load shedding term. Unlike the original paper, we didn’t include the probability-weighted ambiguity sets for multiple disaster scenarios, we only focusing first on the deterministic investment decisions.<br>
 <img src="Images/Objective Function for Stage 2.png" alt="Objective Function for Stage 2" width="450"><br>
 <br>
-The formulation in Phase 3 is similar to that of Phase 2. The key difference lies in modifying the objective function to account for the probability of occurrence across various disaster scenarios.<br>
+The formulation in *Phase 3* is similar to that of Phase 2. The key difference lies in modifying the objective function to account for the probability of occurrence across various disaster scenarios.<br>
 <img src="Images/Objective Function for Stage 3.png" alt="Objective Function for Stage 3" width="450"><br>
 <br>
 
-
-
-
 ### 3.2 Analysis
 
-> Phase 1 : Basic Model (Simplified IEEE 13-Node Distribution System)
+**Phase 1 : Basic Model (Simplified IEEE 13-Node Distribution System)**
 
 The primary goal for this phase, which is building a basic model, is to **minimize system performance loss**. We formulate the objective function as the minimization of total load shedding, defined as the summation of unserved active power across all nodes.  
 To ensure physical realism and maintain a logical radial topology, a minimal penalty cost for switching operations has been incorporated to prevent "ghost flows" (mathematical loops).  
@@ -231,16 +231,21 @@ In the following figures, the system status is represented as follows:
  * On the top of each figure will mention which line(s) is/are broken, and also record the total load shedding.
  * Green Lines (Switch = 1): Represent active lines carrying power flow.  
  * Red Dashed Lines (Switch = 0): Represent broken or open lines with no flow.  
- * The numerical labels indicate the magnitude of active power flow on each line.
+ * The numerical labels indicate the magnitude of active power flow on each node.
 <br>  
  These result figures showing that our basic model is working properly.
 <br>
-<img src="Images/Example_Broken 1 Line (L1).png" alt="Example_Broken 1 Line (L1)" width="600">
-<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="600">
-<img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600">
+<br>
+1. This result validates our basic model structure. Since Line 1 (L1) is the main power source, breaking it cuts off the entire network, resulting in 100% load shedding (1155.35 kW), which equal to the sum of magnitude of active power flow on each node. This confirms that our grid topology and power flow logic are built correctly.<br>
+<img src="Images/Example_Broken 1 Line (L1).png" alt="Example_Broken 1 Line (L1)" width="600"><br>
+2. This figure illustrates the network of the Phase 1 basic model under a Line 11 (L11) failure scenario. L11 is marked with a dashed red line, indicating that the line is damaged and disconnected; therefore, no current flows through it. L6 and L10 remain in an open state (zero current). This is to strictly adhere to the Radial Topology constraint of distribution networks, preventing the formation of closed loops and ensuring operational safety. L12 shows no current flow primarily because the connected Node 10 has a load demand of 0 kW. <br>
+<img src="Images/Example_Broken 1 Line (L11).png" alt="Example_Broken 1 Line (L11)" width="600"><br>
+3. This figure illustrates the network of the Phase 1 basic model under a dual-failure scenario where both Line 2 (L2) and Line 7 (L7) are damaged simultaneously. With the main feeder line L2 broken, the system cannot supply the right side of the grid directly. The model successfully reroutes a significant amount of power (899 kW) through the upper loop (L11 -> L12 -> L13 -> L14 -> L15) to reach Node 3 and its downstream nodes. L9 remains open (dashed red line) to maintain the Radial Topology. <br>
+<img src="Images/Example_Broken 1 Line (L2 and L7).png" alt="Example_Broken 1 Line (L2 and L7)" width="600"><br>
+4. This figure illustrates the network of the Phase 1 basic model under a severe triple-failure scenario where L2, L11, and L15 are simultaneously damaged. The failure of L11 and L15 completely isolates the upper section of the grid (Nodes 10, 11, 12, 13) from the main power source. With no alternative path available, this entire section experiences a blackout, contributing significantly to the 551.00 kW total load shedding.<br>
 <img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
-<br>
+From these examples, we can confirm that our grid topology is built correctly. Next, we will move on to the next phase. If you need the source code for the grid, please refer to [code](codes/phase_1_Basic Model.py)
 
 > Phase 2 : Deterministic Resilience Planning
 <br>
