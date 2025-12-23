@@ -246,6 +246,7 @@ In the following figures, the system status is represented as follows:
 <img src="Images/Example_Broken 1 Line (L2 and L7 and L15).png" alt="Example_Broken 1 Line (L2 and L7 and L15)" width="600">
 <br>
 From these examples, we can confirm that our grid topology is built correctly. Next, we will move on to the next phase. If you need the source code for the grid, please refer to [code](codes/phase_1_Basic%20Model.py)
+<br>
 
 > Phase 2 : Deterministic Resilience Planning
 <br>
