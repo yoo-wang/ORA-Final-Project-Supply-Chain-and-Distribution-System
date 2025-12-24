@@ -303,13 +303,20 @@ As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have
 | Distinct Set (Scenario) | Distinct Disaster Scenario | Occurrence Probability | 
 | :--- | :--- | :--- |
 | 1 | A<br>C | 90%<br>10% |
-| 2 | A<br>C | 90%<br>10% |
+| 2 | B<br>C | 90%<br>10% |
 | 3 | A<br>C | 50%<br>50% |
-| 4 | B<br>C | 90%<br>10% |
-| 5 | B<br>C | 10%<br>90% |
-| 6 | B<br>C | 50%<br>50% |
+| 4 | B<br>C | 50%<br>50% |
+| 5 | A<br>C | 10%<br>90% |
+| 6 | B<br>C | 10%<br>90% |
 <br>
-
+Due to space limitations, we only present selected examples, for other examples, please refer to [result link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
+Below, we use *Distinct Set (Scenario) 1 and 3* for illustration.
+<br>
+<br>
+Distinct Set (Scenario) 1
+<br>
+<img src="results/Phase3_Scenario1/S1_Investiment_Plot.png" alt="Scenario1_S1_Investiment_Plot" width="800"><br>
+<img src="results/Phase3_Scenario1/S2_Investiment_Plot.png" alt="Scenario1_S2_Investiment_Plot" width="800"><br>
 ### 3.3 Results and Managerial Implications
 
 ## 4. Conclusion
