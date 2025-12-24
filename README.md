@@ -310,6 +310,7 @@ As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have
 | 6 | B<br>C | 10%<br>90% |
 <br>
 Due to space limitations, we only present selected examples, for other examples, please refer to [result link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
+
 Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.<br>
 
  * Cost for hardening a line : $400
@@ -323,7 +324,6 @@ Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.<br>
 Distinct Set (Scenario) 1<br>
 <br>
 For Scenario 1, the optimization model concluded that the most cost-effective strategy is to harden only one single line: Line 5 (L5) (marked in solid blue).<br>
-<br>
 Following figure is the detailed breakdown of probabilistic Outcomes:<br>
 90% Probability Event (Frequent Scenario): In this high-probability case, the attack targets Line 2 (L2) and Line 11 (L11).<br>
 Result: Although the main feeder (L2) and the upper branch (L11) are destroyed, the grid remains fully functional. The system successfully reroutes power through the bottom loop via the hardened Line 5, ensuring that Total Load Shedding is 0 kW (Loss: $0).<br>
