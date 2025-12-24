@@ -310,13 +310,48 @@ As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have
 | 6 | B<br>C | 10%<br>90% |
 <br>
 Due to space limitations, we only present selected examples, for other examples, please refer to [result link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
-Below, we use *Distinct Set (Scenario) 1 and 3* for illustration.
+Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.<br>
+
+ * Cost for hardening a line : $400
+ * Cost for installing a generator : $1.5/kW
+ * Cost for load shedding : $14/kW
+ * Capacity of a generator : 100kW
+ * Budget for line hardening : 1 line
+ * Budget for generator installation : 1 generator <br>
+
 <br>
+Distinct Set (Scenario) 1<br>
 <br>
-Distinct Set (Scenario) 1
+For Scenario 1, the optimization model concluded that the most cost-effective strategy is to harden only one single line: Line 5 (L5) (marked in solid blue).<br>
+<br>
+Following figure is the detailed breakdown of probabilistic Outcomes:<br>
+90% Probability Event (Frequent Scenario): In this high-probability case, the attack targets Line 2 (L2) and Line 11 (L11).<br>
+Result: Although the main feeder (L2) and the upper branch (L11) are destroyed, the grid remains fully functional. The system successfully reroutes power through the bottom loop via the hardened Line 5, ensuring that Total Load Shedding is 0 kW (Loss: $0).<br>
 <br>
 <img src="results/Phase3_Scenario1/S1_Investiment_Plot.png" alt="Scenario1_S1_Investiment_Plot" width="800"><br>
+<br>
+10% Probability Event (Rare Scenario): In this lower-probability but more severe case, the attack targets five lines: L2, L5, L8, L14, and L15.<br>
+Result: This demonstrates the value of the investment. Although Line 5 was targeted, it survives the attack because it was hardened (Solid Blue). This allows power to continue flowing to the bottom section (Nodes 5, 6, 7). However, due to the simultaneous loss of L14 and L15, Node 13 becomes isolated and experiences a blackout (Red Node), resulting in a limited loss of $793.<br>
+<br>
 <img src="results/Phase3_Scenario1/S2_Investiment_Plot.png" alt="Scenario1_S2_Investiment_Plot" width="800"><br>
+<br>
+<br>
+<br>
+Distinct Set (Scenario) 4<br>
+<br>
+For Scenario 4, the optimization model proposed a hybrid investment strategy: Hardening Line 2 (L2) (Solid Blue) and simultaneously installing a Distributed Generator (DG) at Node 6 (Yellow Node).<br>
+<br>
+Following figure is the detailed breakdown of probabilistic Outcomes:<br>
+50% Probability Event : In this case, the attack targets Line 4 (L4), Line 6 (L6) and Line 11 (L11).<br>
+Result: The destruction of L4 and L6 isolates the bottom-left section of the grid. However, the investment pays off: Node 6 remains operational (Yellow) solely because of the on-site DG. Unfortunately, due to capacity or flow constraints after the loss of L4, Node 5 cannot be fully supplied and experiences load shedding (Red Node). The upper grid (Nodes 10-13) survives by rerouting power through the right side (L3 $\rightarrow$ L15), resulting in a limited loss of $467.<br>
+<img src="results/Phase3_Scenario4/S1_Investiment_Plot.png" alt="Scenario4_S1_Investiment_Plot" width="800"><br>
+<br>
+50% Probability Event : In this severe case, the attack targets five lines: L2, L5, L8, L14, and L15.<br>
+Result: The strategic value of Hardening Line 2 (L2) is critical here. Although L2 is targeted (Red Dotted), it does not break (remains Solid Blue), allowing power to flow from the source to the main bus (Node 2) and down to Node 5 via L4. Meanwhile, Node 6 is self-sustained by its DG. The primary loss comes from Node 13 (Red Node), which becomes completely isolated due to the simultaneous destruction of L14 and L15, resulting in a total loss of $793.
+<br>
+<img src="results/Phase3_Scenario4/S1_Investiment_Plot.png" alt="Scenario4_S1_Investiment_Plot" width="800"><br>
+<br>
+
 ### 3.3 Results and Managerial Implications
 
 ## 4. Conclusion
