@@ -45,6 +45,20 @@ This creates a critical need for Resilience-Oriented Planning. By proactively ha
 This project implements a resilience-oriented optimization model to determine the optimal strategies for line hardening and DG allocation, aiming to minimize the expected load shedding penalties when facing extreme weather events.
 
 ## 2. Methodology
+In this project, we address the problem of enhancing power distribution system resilience against extreme weather events or physical attacks. We model this as a Resilience-Oriented Distribution System Planning problem, formulated as a Mixed-Integer Linear Programming (MILP) model.<br>
+<br>
+We adopted a Two-Stage Optimization Framework integrated with Linearized DistFlow (LinDistFlow) equations.<br>
+
+ * Why MILP?<br>
+The decision-making process involves binary variables (e.g., whether to harden a line, whether to install a generator) and continuous variables (e.g., power flow, load shedding amount). MILP is the standard and most effective method for solving such combinatorial optimization problems globally.<br>
+ * Why LinDistFlow?<br> 
+Full AC power flow equations are non-convex and computationally expensive (NP-Hard). LinDistFlow provides a convex, linear approximation that ensures computational tractability while maintaining sufficient accuracy for distribution network planning.
+
+The primary uncertain factor in our problem is the Attack/Damage Status ($z_{ij}$) of the transmission lines.<br>
+
+ * Nature of Uncertainty: We do not know in advance exactly which lines will be destroyed by a disaster.<br>
+ * Impact: If a critical backbone line (e.g., Line 1 or Line 2 in the IEEE 13 bus) is destroyed without backup, it causes a cascading blackout downstream, leading to massive Load Shedding Penalties.<br>
+ * Handling Uncertainty: We address this by simulating multiple Attack Scenarios ($s \in S$), each with an assigned probability. The model minimizes the expected cost across these scenarios.<br>
 
 
 ## 3. Data Collection and Analysis Result
@@ -349,7 +363,7 @@ Result: The destruction of L4 and L6 isolates the bottom-left section of the gri
 50% Probability Event : In this severe case, the attack targets five lines: L2, L5, L8, L14, and L15.<br>
 Result: The strategic value of Hardening Line 2 (L2) is critical here. Although L2 is targeted (Red Dotted), it does not break (remains Solid Blue), allowing power to flow from the source to the main bus (Node 2) and down to Node 5 via L4. Meanwhile, Node 6 is self-sustained by its DG. The primary loss comes from Node 13 (Red Node), which becomes completely isolated due to the simultaneous destruction of L14 and L15, resulting in a total loss of $793.
 <br>
-<img src="results/Phase3_Scenario4/S1_Investiment_Plot.png" alt="Scenario4_S1_Investiment_Plot" width="800"><br>
+<img src="results/Phase3_Scenario4/S2_Investiment_Plot.png" alt="Scenario4_S2_Investiment_Plot" width="800"><br>
 <br>
 
 ### 3.3 Results and Managerial Implications
