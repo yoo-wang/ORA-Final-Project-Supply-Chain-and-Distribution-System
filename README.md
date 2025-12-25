@@ -375,7 +375,7 @@ Result: The strategic value of Hardening Line 2 (L2) is critical here. Although 
 <br>
 Beyond the three main phases of modeling, we conducted a Probability Sensitivity Analysis to evaluate the robustness of our investment decisions. Since the probability of specific disaster scenarios (e.g., rare extreme events) is often difficult to estimate precisely, this analysis helps us understand how the optimal strategy shifts as these probabilities vary.<br>
 We performed the Probability Sensitivity Analysis on two Distinct Sets (Scenarios). We demonstrate the results for Distinct Set 1 below.<br>
-For the detailed results of the other set, please refer to the [Sensitivity Analysis Data for Set 2](results/Probability%20Sensitivity%20Analysis%202).<br>
+For the detailed results of the other set, please refer to the [Sensitivity Analysis Data for Set 2](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results/Probability%20Sensitivity%20Analysis%202).<br>
 <br>
 Following chart visualizes how the optimal Investment Cost changes as the probability of the severe disaster scenario increases.<br>
  * Scenario Definition: In this specific analysis set, we compare two distinct scenarios:<br>
