@@ -9,20 +9,20 @@
 | Advisor |  **李家岩 (Chia-Yen Lee, Ph.D.)**
 
 ## Table of Contents
-[1. Background and Motivation](1-background-and-motivation)
- * [1.1 Motivation](11-motivation)
- * [1.2 Background](12-background)
- * [1.3 Problem Definition](13-problem-definition)
+[1. Background and Motivation](#1-background-and-motivation)
+ * [1.1 Motivation](#11-motivation)
+ * [1.2 Background](#12-background)
+ * [1.3 Problem Definition](#13-problem-definition)
 
-[2. Methodology](2-methodology)
+[2. Methodology](#2-methodology)
 
-[3. Data Collection and Analysis Result](3-data-collection-and-analysis-result)
- * [3.1 Data Collection](31-data-collection)
- * [3.2 Analysis + Results and Managerial Implications](32-analysis--results-and-managerial-implications)
+[3. Data Collection and Analysis Result](#3-data-collection-and-analysis-result)
+ * [3.1 Data Collection](#31-data-collection)
+ * [3.2 Analysis + Results and Managerial Implications](#32-analysis--results-and-managerial-implications)
 
-[4. Conclusion](4-conclusion)
+[4. Conclusion](#4-conclusion)
 
-[5. References](5-references)
+[5. References](#5-references)
 
 ## 1. Background and Motivation
 ### 1.1 Motivation
