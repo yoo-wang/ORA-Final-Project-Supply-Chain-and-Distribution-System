@@ -370,8 +370,43 @@ Result: The strategic value of Hardening Line 2 (L2) is critical here. Although 
 <img src="results/Phase3_Scenario4/S2_Investiment_Plot.png" alt="Scenario4_S2_Investiment_Plot" width="800"><br>
 <br>
 
-**Bonus : Probability Sensitivity Analysis** <br>
+---
 
+**Bonus : Probability Sensitivity Analysis** <br>
+<br>
+Beyond the three main phases of modeling, we conducted a Probability Sensitivity Analysis to evaluate the robustness of our investment decisions. Since the probability of specific disaster scenarios (e.g., rare extreme events) is often difficult to estimate precisely, this analysis helps us understand how the optimal strategy shifts as these probabilities vary.<br>
+We performed the Probability Sensitivity Analysis on two Distinct Sets (Scenarios). We demonstrate the results for Distinct Set 1 below.<br>
+For the detailed results of the other set, please refer to the [Sensitivity Analysis Data for Set 2](results/Probability%20Sensitivity%20Analysis%202).<br>
+<br>
+Following chart visualizes how the optimal Investment Cost changes as the probability of the severe disaster scenario increases.<br>
+ * Scenario Definition: In this specific analysis set, we compare two distinct scenarios:<br>
+Baseline Scenario (Scenario 1): Corresponds to Disaster A (2 lines broken: L2, L11).<br>
+Severe Scenario (Scenario 2 - X Axis): Corresponds to Disaster C (5 lines broken: L2, L5, L8, L14, L15).<br>
+<img src="results/Probability Sensitivity Analysis 1/S2_Tipping_Points.png" alt="Probability Sensitivity Analysis 1_S2_Tipping_Points" width="800"><br>
+<br>
+
+ * Risk Tolerance Zone (Prob < 0.1): When the probability of the severe disaster (Disaster C) is below 10%, the model suggests an investment of $0.
+   Decision: No Hardening, No Generator.
+   Insight: At low probabilities, the expected penalty cost of the severe event is not high enough to justify the upfront investment costs.
+
+ * First Tipping Point (Prob = 0.1): Once the probability reaches 10%, the investment strategy jumps to $400.
+   Decision: Harden Line 5 (H:[5]).
+   Insight: The model determines that protecting the critical loop (via L5) becomes economically viable to mitigate the rising expected risk.
+
+ * Second Tipping Point (Prob = 0.2): At 20% probability, the investment increases further to $550.
+   Decision: Harden Line 5 (H:[5]) + Install DG at Node 13 (G:[13]).
+   Insight: As the risk of the severe 5-line failure increases, simply hardening a line is no longer sufficient. The model adds a Distributed Generator (DG) to ensure power supply to the isolated sections (specifically Node 13, which is vulnerable in Disaster C).
+
+ * Strategy Saturation (Prob > 0.2): Beyond 20%, the total investment cost stabilizes at $550, although the specific hardening choice may shift slightly (swapping between H:[5] and H:[2]) to fine-tune operations. This indicates that $550 is the optimal investment ceiling for this specific constraint set.
+<br>
+<br>
+Following the investment strategy analysis, this chart quantifies the economic benefit of using our stochastic model, defined as the Value of Stochastic Solution (VSS). The vertical axis represents the "Cost Saving ($)" achieved by adopting the stochastic optimal plan compared to a deterministic expectation-based plan.<br>
+<img src="results/Probability Sensitivity Analysis 1/VSS_Curve.png" alt="Probability Sensitivity Analysis 1_S2_VSS_Curve" width="800"><br>
+
+ * Rising Value of Robustness (Prob 0.0 - 0.5):As the probability of the severe disaster (Scenario 2) increases, the gap between a good plan and a bad plan widens. The green curve rises sharply, indicating that ignoring the risk becomes increasingly expensive.
+ * The Peak Value (Prob = 0.5):The model provides the maximum value when uncertainty is highest (around 50%). At this point, the Peak Cost Saving reaches $3,774 (marked by the Red Star). This proves that our model is most critical when the future is highly uncertain and difficult to predict.
+ * The "Obvious Decision" Zone (Prob $\ge$ 0.6):Interestingly, the curve drops to zero after the probability exceeds 60%.Reasoning: When a disaster becomes highly probable (almost certain), the decision to invest becomes obvious even without a complex model (e.g., any rational planner would harden the lines if the failure risk is 80%).
+<br>
 
 ### 3.3 Results and Managerial Implications
 
