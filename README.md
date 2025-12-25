@@ -8,23 +8,6 @@
 | Editor/ Student | **王宥惠 (Yu-Hui, Wang)** | [Email](mailto:huihui.162636@gmail.com) |
 | Advisor |  **李家岩 (Chia-Yen Lee, Ph.D.)**
 
-## Table of Contents
-[1.Background and Motivation](#background-and-motivation)
-   * [1.1 Motivation](#motivation)
-   * [1.2 Background](#background)
-   * [1.3 Problem Definition](#problem-definition)
-
-[2.Methodology](#methodology)
-
-[3.Data Collection and Analysis Result](#data-collection-and-analysis-result)
-   * [3.1 Data Collection](#data-collection)
-   * [3.2 Analysis + Results and Managerial Implications](#analysis-+-results-and-managerial-implications)
-
-[4.Conclusion](#conclusion)
-
-[5.References](#references)
-  
-
 
 ## 1. Background and Motivation
 ### 1.1 Motivation
@@ -314,7 +297,7 @@ If you need the source code for the grid, please refer to [our code example](cod
 **Phase 3 : Two-Scenario Robust Planning**
 <br>
 In this phase, we introduce uncertainty by modeling two distinct attack scenarios ($S_1$ and $S_2$). Our objective is to analyze how optimal reinforcement strategies (line hardening and generator placement) shift under different risk profiles. Ultimately, we aim to calculate the minimum expected total cost weighted across all potential failure probabilities.<br>
-As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have 3 Distinct Disaster Scenarios. We generate three unique *disaster sets* by creating pairwise combinations of these scenarios. Within each set, the two specific disasters are assigned different probabilities of occurrence. Please refer to the table below.
+As we mentioned in 3.1 Data Collection - Parameters, we have 3 Distinct Disaster Scenarios. We generate three unique *disaster sets* by creating pairwise combinations of these scenarios. Within each set, the two specific disasters are assigned different probabilities of occurrence. Please refer to the table below.
 | Distinct Set (Scenario) | Distinct Disaster Scenario | Occurrence Probability | 
 | :--- | :--- | :--- |
 | 1 | A<br>C | 90%<br>10% |
@@ -412,9 +395,9 @@ Following the investment strategy analysis, this chart quantifies the economic b
 
 ## 4. Conclusion
 
-In this project, we tried to build a resilience-oriented planning model from scratch using the IEEE 13-node system. We found that while simple rerouting works for minor issues, real resilience against big storms or attacks needs a hybrid strategy—a smart mix of hardening lines and installing backup generators (DGs). Our analysis also showed us exactly "when" to invest money based on risk probabilities, preventing us from blindly spending budget.
-Throughout this implementation, we learned a lot during our discussions. To be honest, at the beginning, we struggled to understand the academic literature and mathematical formulations. However, as we broke down the problems and debated the logic together, we gradually gained a clear understanding of what we were doing.
-A key takeaway from our analysis was the insight provided by the Value of Stochastic Solution (VSS). We found that in situations of high uncertainty (e.g., a 50/50 probability), relying on intuition alone can lead to suboptimal decisions. Our model provides a quantitative basis for these difficult choices, helping to identify strategies that effectively balance investment costs against potential losses. We hope this project demonstrates how theoretical optimization models can be practically applied to enhance grid resilience.
+In this project, we tried to build a resilience-oriented planning model from scratch using the IEEE 13-node system. We found that while simple rerouting works for minor issues, real resilience against big storms or attacks needs a hybrid strategy—a smart mix of hardening lines and installing backup generators (DGs). Our analysis also showed us exactly "when" to invest money based on risk probabilities, preventing us from blindly spending budget.<br>
+Throughout this implementation, we learned a lot during our discussions. To be honest, at the beginning, we struggled to understand the academic literature and mathematical formulations. However, as we broke down the problems and debated the logic together, we gradually gained a clear understanding of what we were doing.<br>
+A key takeaway from our analysis was the insight provided by the Value of Stochastic Solution (VSS). We found that in situations of high uncertainty (e.g., a 50/50 probability), relying on intuition alone can lead to suboptimal decisions. Our model provides a quantitative basis for these difficult choices, helping to identify strategies that effectively balance investment costs against potential losses. We hope this project demonstrates how theoretical optimization models can be practically applied to enhance grid resilience.<br>
 
 
 ## 5. References
