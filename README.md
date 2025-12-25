@@ -266,6 +266,7 @@ From these examples, we can confirm that our grid topology is built correctly. N
 <br>
 
 ---
+
 **Phase 2 : Deterministic Resilience Planning** <br>
 In this phase, we introduce the costs for line hardening and installing backup generators. At the same time, we assume specific scenarios where grid lines are targeted by attacks. Through the simulation results, we will demonstrate our ability to determine the minimum upfront investment required to minimize the overall damage to the system.<br>
  * Cost for hardening a line : $400
@@ -305,13 +306,15 @@ The high total cost ($5,744) reflects the trade-off between limited investment b
  * Load Shedding Penalty: The remaining deficit (Node 11, 13, and part of 12) results in a load shedding penalty of $5,194.
 <br>
 <br>
-The comparison between these two scenarios demonstrates the model's capability to identify the optimal resilience strategy that minimizes total system loss under different conditions. These results validate that our proposed model can effectively quantify the trade-off between investment costs (Hardening/DG) and operational penalties (Load Shedding), successfully calculating the Global Minimum Loss for any given disaster scenario. If you need the source code for the grid, please refer to [our code example](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/blob/main/codes/phase%202_Deterministic.py)
+The comparison between these two scenarios demonstrates the model's capability to identify the optimal resilience strategy that minimizes total system loss under different conditions. These results validate that our proposed model can effectively quantify the trade-off between investment costs (Hardening/DG) and operational penalties (Load Shedding), successfully calculating the Global Minimum Loss for any given disaster scenario.<br>
+If you need the source code for the grid, please refer to [our code example](codes/phase%202_Deterministic.py)
+<br>
 <br>
 
 ---
 
-> Phase 3 : Two-Scenario Robust Planning
-
+**Phase 3 : Two-Scenario Robust Planning**
+<br>
 In this phase, we introduce uncertainty by modeling two distinct attack scenarios ($S_1$ and $S_2$). Our objective is to analyze how optimal reinforcement strategies (line hardening and generator placement) shift under different risk profiles. Ultimately, we aim to calculate the minimum expected total cost weighted across all potential failure probabilities.<br>
 As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have 3 Distinct Disaster Scenarios. We generate three unique *disaster sets* by creating pairwise combinations of these scenarios. Within each set, the two specific disasters are assigned different probabilities of occurrence. Please refer to the table below.
 | Distinct Set (Scenario) | Distinct Disaster Scenario | Occurrence Probability | 
@@ -323,8 +326,9 @@ As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have
 | 5 | A<br>C | 10%<br>90% |
 | 6 | B<br>C | 10%<br>90% |
 <br>
-Due to space limitations, we only present selected examples, for other examples, please refer to [result link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
-
+Due to space limitations, we only present selected examples, for other examples, please refer to [Result Link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
+<br>
+<br>
 Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.<br>
 
  * Cost for hardening a line : $400
@@ -365,6 +369,9 @@ Result: The strategic value of Hardening Line 2 (L2) is critical here. Although 
 <br>
 <img src="results/Phase3_Scenario4/S2_Investiment_Plot.png" alt="Scenario4_S2_Investiment_Plot" width="800"><br>
 <br>
+
+**Bonus : Probability Sensitivity Analysis** <br>
+
 
 ### 3.3 Results and Managerial Implications
 
