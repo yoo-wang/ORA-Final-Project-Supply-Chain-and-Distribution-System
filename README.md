@@ -18,11 +18,9 @@
 
 [3.Data Collection and Analysis Result](#data-collection-and-analysis-result)
    * [3.1 Data Collection](#data-collection)
-   * [3.2 Analysis](#analysis)
-   * [3.3 Results and Managerial Implications](#results-and-managerial-implications)
+   * [3.2 Analysis + Results and Managerial Implications](#analysis-+-results-and-managerial-implications)
 
 [4.Conclusion](#conclusion)
-
 
 [5.References](#references)
   
@@ -235,7 +233,7 @@ The formulation in *Phase 3* is similar to that of Phase 2. The key difference l
 <img src="Images/Objective Function for Stage 3.png" alt="Objective Function for Stage 3" width="450"><br>
 <br>
 
-### 3.2 Analysis
+### 3.2 Analysis + Results and Managerial Implications
 
 **Phase 1 : Basic Model (Simplified IEEE 13-Node Distribution System)**
 
@@ -329,7 +327,10 @@ As we mentioned in [3.1 Data Collection - Parameters](#data-collection), we have
 Due to space limitations, we only present selected examples, for other examples, please refer to [Result Link](https://github.com/yoo-wang/ORA-Final-Project-Supply-Chain-and-Distribution-System/tree/main/results).<br>
 <br>
 <br>
-Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.<br>
+
+Below, we use *Distinct Set (Scenario) 1 and 4* for illustration.
+
+<br>
 
  * Cost for hardening a line : $400
  * Cost for installing a generator : $1.5/kW
@@ -408,9 +409,13 @@ Following the investment strategy analysis, this chart quantifies the economic b
  * The "Obvious Decision" Zone (Prob $\ge$ 0.6):Interestingly, the curve drops to zero after the probability exceeds 60%.Reasoning: When a disaster becomes highly probable (almost certain), the decision to invest becomes obvious even without a complex model (e.g., any rational planner would harden the lines if the failure risk is 80%).
 <br>
 
-### 3.3 Results and Managerial Implications
 
 ## 4. Conclusion
+
+In this project, we tried to build a resilience-oriented planning model from scratch using the IEEE 13-node system. We found that while simple rerouting works for minor issues, real resilience against big storms or attacks needs a hybrid strategy—a smart mix of hardening lines and installing backup generators (DGs). Our analysis also showed us exactly "when" to invest money based on risk probabilities, preventing us from blindly spending budget.
+Throughout this implementation, we learned a lot during our discussions. To be honest, at the beginning, we struggled to understand the academic literature and mathematical formulations. However, as we broke down the problems and debated the logic together, we gradually gained a clear understanding of what we were doing.
+A key takeaway from our analysis was the insight provided by the Value of Stochastic Solution (VSS). We found that in situations of high uncertainty (e.g., a 50/50 probability), relying on intuition alone can lead to suboptimal decisions. Our model provides a quantitative basis for these difficult choices, helping to identify strategies that effectively balance investment costs against potential losses. We hope this project demonstrates how theoretical optimization models can be practically applied to enhance grid resilience.
+
 
 ## 5. References
 Zhang, G., Zhang, F., Zhang, X., Wu, Q., & Meng, K. (2020). A multi-disaster-scenario distributionally robust planning model for enhancing the resilience of distribution systems. International Journal of Electrical Power and Energy Systems, 122, Article 106161. https://doi.org/10.1016/j.ijepes.2020.106161
